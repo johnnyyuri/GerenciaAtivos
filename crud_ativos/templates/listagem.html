@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Listagem de Ativos</h2>
+    <ul>{% for ativo in ativos %}
+        <li>{{ativo}} - {{ativo.ipv4}} - {{ativo.mac}} - {{ativo.patrimonio}}
+            - {{ativo.instalado}} - {{ativo.instaladores}}
+            <a href="{% url 'url_updativo' ativo.id %}">Alterar</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'url_nuativo' %}">Novo</a>
+
+    <h2>Listagem de Colaboradores</h2>
+    <ul>{% for colaborador in colaboradores %}
+        <li>{{colaborador}} - {{colaborador.telefone}} - {{colaborador.celular}} - {{colaborador.email}}
+            <a href="{% url 'url_updcolab' colaborador.id %}">Alterar</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'url_nucolab' %}">Novo</a>
+</body>
+</html>
