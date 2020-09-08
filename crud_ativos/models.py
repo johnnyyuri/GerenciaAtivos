@@ -7,6 +7,9 @@ class Colaborador(models.Model):
     celular = models.CharField(max_length=20, null=True, blank=True)
     email = models.CharField(max_length=100, null=True, blank=True)
 
+    class Meta:
+        verbose_name_plural = "Colaboradores"
+
     def __str__(self):
         return self.colab_name
 

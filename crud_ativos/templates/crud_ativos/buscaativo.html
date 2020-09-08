@@ -8,26 +8,17 @@
     <title>Document</title>
 </head>
 <body>
-    <h2>Listagem de Ativos</h2>
     <form action="{% url 'buscaativo' %}" method="get">
-      <input name="q" type="text" placeholder="Busca...">
+        <input name="q" type="text" placeholder="Busca...">
     </form>
-    <ul>{% for ativo in ativos %}
+    <h2>Resultados da Busca</h2>
+    <ul>{% for ativo in object_list %}
         <li>{{ativo}} - {{ativo.ipv4}} - {{ativo.mac}} - {{ativo.patrimonio}}
             - {{ativo.instalado}} - {{ativo.instaladores}}
             <a href="{% url 'url_updativo' ativo.id %}">Alterar</a>
         </li>
         {% endfor %}
     </ul>
-    <a href="{% url 'url_nuativo' %}">Novo</a>
-
-    <h2>Listagem de Colaboradores</h2>
-    <ul>{% for colab in colabs %}
-        <li>{{colab}} - {{colab.telefone}} - {{colab.celular}} - {{colab.email}}
-            <a href="{% url 'url_updcolab' colab.id %}">Alterar</a>
-        </li>
-        {% endfor %}
-    </ul>
-    <a href="{% url 'url_nucolab' %}">Novo</a>
+<a href="{% url 'url_list' %}">Voltar para a listagem completa</a>
 </body>
 </html>

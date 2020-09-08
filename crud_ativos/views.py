@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect
+from django.views.generic import ListView, TemplateView
+from django.db.models import Q
 from .form import AtivoForm, ColabForm
 from django.http import HttpResponse
 from .models import Ativo, Colaborador
@@ -58,3 +60,17 @@ def deletecolab(request, pk):
     colaborador = Colaborador.objects.get(pk=pk)
     colaborador.delete()
     return redirect('url_list')
+
+class SearchResultsView(ListView):
+    model = Ativo
+    template_name = 'crud_ativos/buscaativo.html'
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        object_list = Ativo.objects.filter(
+            Q(dev_name__icontains=query) | Q(patrimonio__icontains=query) | Q(mac__icontains=query)
+            | Q(ipv4__icontains=query)
+        )
+        return object_list
+
+
