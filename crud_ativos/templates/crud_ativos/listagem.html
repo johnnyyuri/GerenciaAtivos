@@ -19,9 +19,9 @@
     <a href="{% url 'url_nuativo' %}">Novo</a>
 
     <h2>Listagem de Colaboradores</h2>
-    <ul>{% for colaborador in colaboradores %}
-        <li>{{colaborador}} - {{colaborador.telefone}} - {{colaborador.celular}} - {{colaborador.email}}
-            <a href="{% url 'url_updcolab' colaborador.id %}">Alterar</a>
+    <ul>{% for colab in colabs %}
+        <li>{{colab}} - {{colab.telefone}} - {{colab.celular}} - {{colab.email}}
+            <a href="{% url 'url_updcolab' colab.id %}">Alterar</a>
         </li>
         {% endfor %}
     </ul>
