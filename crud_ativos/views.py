@@ -69,7 +69,7 @@ class SearchResultsView(ListView):
         query = self.request.GET.get('q')
         object_list = Ativo.objects.filter(
             Q(dev_name__icontains=query) | Q(patrimonio__icontains=query) | Q(mac__icontains=query)
-            | Q(ipv4__icontains=query)
+            | Q(ipv4__icontains=query) | Q(instaladores__colab_name__icontains=query)
         )
         return object_list
 
